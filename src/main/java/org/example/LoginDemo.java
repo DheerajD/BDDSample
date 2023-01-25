@@ -16,4 +16,8 @@ public class LoginDemo {
         }
 
     }
+
+    public boolean isBlockedUser() {
+        return blockedUser;
+    }
 }

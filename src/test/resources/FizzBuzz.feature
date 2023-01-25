@@ -10,7 +10,7 @@ Feature: FizzBuzz game play features defined here
     When input number is 5
     Then Result is "Buzz"
 
-  Scenario: Play FizzBuzz to get Buzz
+  Scenario: Play FizzBuzz to get FizzBuzz
     Given Create a FizzBuzz game play
     When input number is 15
     Then Result is "FizzBuzz"

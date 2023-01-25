@@ -5,39 +5,39 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.But;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.junit.Assert;
 
 public class Login2Stepdefs {
     LoginDemo loginDemo;
+    boolean result;
     public Login2Stepdefs() {
         loginDemo = new LoginDemo();
     }
 
-    @Then("^login is unsuccessful$")
+    @Then("^login func is unsuccessful$")
     public void loginIsUnsuccessful() {
+        Assert.assertFalse(result);
+    }
+
+    @Then("^login func is successful$")
+    public void loginIsSuccessful() {
+        Assert.assertTrue(result);
     }
 
     @But("^user is not blocked$")
     public void userIsNotBlocked() {
+        Assert.assertFalse(loginDemo.isBlockedUser());
     }
 
 
     @And("^user is blocked$")
     public void userIsBlocked() {
+        Assert.assertTrue(loginDemo.isBlockedUser());
     }
 
-    @When("^user enters valid credentials \"([^\"]*)\" and \"([^\"]*)\"$")
-    public void userEntersValidCredentialsAnd(String arg0, String arg1) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
-    }
 
-    @When("^user enters invalid credentials \"([^\"]*)\" and \"([^\"]*)\"$")
-    public void userEntersInvalidCredentialsAnd(String arg0, String arg1) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
-    }
-
-    @When("^blocked user enters invalid credentials$")
-    public void blockedUserEntersInvalidCredentials() {
+    @When("^user enters credentials \"([^\"]*)\" and \"([^\"]*)\"$")
+    public void userEntersCredentialsAnd(String arg0, String arg1) throws Throwable {
+        result = loginDemo.login(arg0, arg1);
     }
 }
